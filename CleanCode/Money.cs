@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace CleanCode
 {
-    public class Money
+    public class Money : IExpression
     {
         int amount;
         string currency;
@@ -46,6 +46,11 @@ namespace CleanCode
         public override string ToString()
         {
             return $"{amount} {currency}";
+        }
+
+        public IExpression Plus(Money money)
+        {
+            return Money.Dollar(amount + money.amount);
         }
     }
 }

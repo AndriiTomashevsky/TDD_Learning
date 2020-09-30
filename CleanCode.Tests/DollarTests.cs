@@ -40,5 +40,16 @@ namespace CleanCode.Tests
             Assert.AreEqual("USD", Money.Dollar(1).Currency());
             Assert.AreEqual("CHF", Money.Franc(1).Currency());
         }
+
+        [TestMethod]
+        public void TestSimpleAddition()
+        {
+            IExpression sum = Money.Dollar(5).Plus(Money.Dollar(5));
+            Bank bank = new Bank();
+            Money reduced = bank.Reduced(sum, "USD");
+
+            Assert.AreEqual(Money.Dollar(10), reduced);
+        }
+
     }
 }
