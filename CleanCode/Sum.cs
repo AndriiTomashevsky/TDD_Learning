@@ -17,7 +17,7 @@ namespace CleanCode
             this.addend = addend;
         }
 
-        public Money Reduce(string to)
+        public Money Reduce(Bank bank, string to)
         {
             return new Money(augent.amount + addend.amount, to);
         }

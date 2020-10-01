@@ -80,5 +80,21 @@ namespace CleanCode.Tests
             Assert.AreEqual(Money.Dollar(1), result);
         }
 
+        [TestMethod]
+        public void TestReduceMoneyDifferentCurrency()
+        {
+            Bank bank = new Bank();
+            bank.AddRate("CHF", "USD", 2);
+            Money result = bank.Reduce(Money.Franc(2), "USD");
+            Assert.AreEqual(Money.Dollar(1), result);
+        }
+
+        [TestMethod]
+        public void TestIdentityRate()
+        {
+            Bank bank = new Bank();
+            Assert.AreEqual(1, bank.Rate("USD", "USD"));
+        }
+
     }
 }

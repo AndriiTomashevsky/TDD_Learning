@@ -53,10 +53,9 @@ namespace CleanCode
             return new Sum(this, money);
         }
 
-        public Money Reduce(string to)
+        public Money Reduce(Bank bank, string to)
         {
-            return this;
+            return new Money(amount / bank.Rate(currency, to), to);
         }
-
     }
 }
