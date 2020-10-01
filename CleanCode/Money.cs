@@ -8,10 +8,10 @@ namespace CleanCode
 {
     public class Money : IExpression
     {
-        int amount;
+        public int amount;
         string currency;
 
-        Money(int amount, string currency)
+        public Money(int amount, string currency)
         {
             this.amount = amount;
             this.currency = currency;
@@ -50,7 +50,13 @@ namespace CleanCode
 
         public IExpression Plus(Money money)
         {
-            return Money.Dollar(amount + money.amount);
+            return new Sum(this, money);
         }
+
+        public Money Reduce(string to)
+        {
+            return this;
+        }
+
     }
 }

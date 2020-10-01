@@ -46,9 +46,38 @@ namespace CleanCode.Tests
         {
             IExpression sum = Money.Dollar(5).Plus(Money.Dollar(5));
             Bank bank = new Bank();
-            Money reduced = bank.Reduced(sum, "USD");
+            Money reduced = bank.Reduce(sum, "USD");
 
             Assert.AreEqual(Money.Dollar(10), reduced);
+        }
+
+        [TestMethod]
+        public void TestPlusReturnSum()
+        {
+            IExpression expression = Money.Dollar(5).Plus(Money.Dollar(5));
+            Sum sum = (Sum)expression;
+
+            Assert.AreEqual(Money.Dollar(5), sum.augent);
+            Assert.AreEqual(Money.Dollar(5), sum.addend);
+        }
+
+        [TestMethod]
+        public void TestReduceSum()
+        {
+            IExpression expression = Money.Dollar(3).Plus(Money.Dollar(4));
+            Bank bank = new Bank();
+
+            Money result = bank.Reduce(expression, "USD");
+            Assert.AreEqual(Money.Dollar(7), result);
+        }
+
+        [TestMethod]
+        public void TestReduceMoney()
+        {
+            Bank bank = new Bank();
+
+            Money result = bank.Reduce(Money.Dollar(1), "USD");
+            Assert.AreEqual(Money.Dollar(1), result);
         }
 
     }

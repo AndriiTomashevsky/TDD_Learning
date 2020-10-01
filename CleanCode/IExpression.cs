@@ -6,7 +6,8 @@ using System.Threading.Tasks;
 
 namespace CleanCode
 {
- public   interface IExpression
+    public interface IExpression
     {
+        Money Reduce(string to);
     }
 }
