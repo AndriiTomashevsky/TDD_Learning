@@ -9,5 +9,7 @@ namespace CleanCode
     public interface IExpression
     {
         Money Reduce(Bank bank, string to);
+        IExpression Plus(IExpression tenFrancs);
+        IExpression Times(int multiplier);
     }
 }

@@ -96,5 +96,45 @@ namespace CleanCode.Tests
             Assert.AreEqual(1, bank.Rate("USD", "USD"));
         }
 
+        [TestMethod]
+        public void TestMixedAddition()
+        {
+            IExpression fiveDollars = Money.Dollar(5);
+            IExpression tenFrancs = Money.Franc(10);
+            Bank bank = new Bank();
+            bank.AddRate("CHF", "USD", 2);
+
+            Money result = bank.Reduce(fiveDollars.Plus(tenFrancs), "USD");
+
+            Assert.AreEqual(Money.Dollar(10), result);
+        }
+
+        [TestMethod]
+        public void TestSumPlusMoney()
+        {
+            IExpression fiveDollars = Money.Dollar(5);
+            IExpression tenFrancs = Money.Franc(10);
+            IExpression sum = new Sum(fiveDollars, tenFrancs).Plus(fiveDollars);
+            Bank bank = new Bank();
+            bank.AddRate("CHF", "USD", 2);
+
+            Money result = bank.Reduce(sum, "USD");
+
+            Assert.AreEqual(Money.Dollar(15), result);
+        }
+
+        [TestMethod]
+        public void TestSumTimes()
+        {
+            IExpression fiveDollars = Money.Dollar(5);
+            IExpression tenFrancs = Money.Franc(10);
+            IExpression sum = new Sum(fiveDollars, tenFrancs).Times(2);
+            Bank bank = new Bank();
+            bank.AddRate("CHF", "USD", 2);
+
+            Money result = bank.Reduce(sum, "USD");
+
+            Assert.AreEqual(Money.Dollar(20), result);
+        }
     }
 }

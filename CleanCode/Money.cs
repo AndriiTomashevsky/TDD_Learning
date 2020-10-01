@@ -33,7 +33,7 @@ namespace CleanCode
             return new Money(amount, "CHF");
         }
 
-        public Money Times(int multiplier)
+        public IExpression Times(int multiplier)
         {
             return new Money(amount * multiplier, currency);
         }
@@ -48,9 +48,9 @@ namespace CleanCode
             return $"{amount} {currency}";
         }
 
-        public IExpression Plus(Money money)
+        public IExpression Plus(IExpression addend)
         {
-            return new Sum(this, money);
+            return new Sum(this, addend);
         }
 
         public Money Reduce(Bank bank, string to)
