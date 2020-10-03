@@ -6,22 +6,24 @@ using System.Threading.Tasks;
 
 namespace ConsoleApp
 {
-    class TestCaseTest : TestCase
+  public  class TestCaseTest : TestCase
     {
+        public override void SetUp()
+        {
+            test = new WasRun();
+            test.Name = test.TestMethod;
+        }
+
         public void TestRunning()
         {
-            //WasRun it's a test case that reports whether a method was run.
-            WasRun test = new WasRun();
-            test.Name = test.TestMethod;
-
-            Assert(test.wasRun); // None
-
-            //Next we need to use our real interface, run(), instead of calling the test method directly.
-            //test.TestMethod();
             test.Run();
+            Assert(test.wasRun);
+        }
 
-            Assert(test.wasRun); // Was run
-
+        public void TestSetUp()
+        {
+            test.Run();
+            Assert(test.wasSetUp); 
         }
 
         private void Assert(string wasRun)

@@ -3,18 +3,25 @@
 namespace ConsoleApp
 {
     //WasRun it's a test case that reports whether a method was run.
-    internal class WasRun : TestCase
+    public class WasRun : TestCase
     {
         internal string wasRun;
+      public  string wasSetUp;
 
         public WasRun()
         {
-            wasRun = "None";
         }
 
         internal void TestMethod()
         {
             wasRun = $"{Name.Method.Name} was run";
         }
+
+        public override void SetUp()
+        {
+            wasRun = "None";
+            wasSetUp = $"{Name.Method.Name} was set up";
+        }
+
     }
 }

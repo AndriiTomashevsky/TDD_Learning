@@ -16,6 +16,11 @@ namespace ConsoleApp
             TestCaseTest test = new TestCaseTest();
             test.Name = test.TestRunning;
             test.Run();
+
+            test = new TestCaseTest();
+            test.Name = test.TestSetUp;
+            test.Run();
+
             Console.ReadKey();
         }
     }
