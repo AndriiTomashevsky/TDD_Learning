@@ -6,24 +6,14 @@ using System.Threading.Tasks;
 
 namespace ConsoleApp
 {
-  public  class TestCaseTest : TestCase
+    public class TestCaseTest : TestCase
     {
-        public override void SetUp()
+        public void TestTemplateMethod()
         {
-            test = new WasRun();
+            WasRun test = new WasRun();
             test.Name = test.TestMethod;
-        }
-
-        public void TestRunning()
-        {
             test.Run();
-            Assert(test.wasRun);
-        }
-
-        public void TestSetUp()
-        {
-            test.Run();
-            Assert(test.wasSetUp); 
+            Assert($"{"SetUp TestMethod TearDown" == test.log}");
         }
 
         private void Assert(string wasRun)

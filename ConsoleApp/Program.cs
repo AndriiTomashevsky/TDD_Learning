@@ -14,11 +14,7 @@ namespace ConsoleApp
         {
             //WasRun it's a test case that reports whether a method was run.
             TestCaseTest test = new TestCaseTest();
-            test.Name = test.TestRunning;
-            test.Run();
-
-            test = new TestCaseTest();
-            test.Name = test.TestSetUp;
+            test.Name = test.TestTemplateMethod;
             test.Run();
 
             Console.ReadKey();

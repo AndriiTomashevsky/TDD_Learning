@@ -6,7 +6,7 @@ namespace ConsoleApp
     public class WasRun : TestCase
     {
         internal string wasRun;
-      public  string wasSetUp;
+        public string log;
 
         public WasRun()
         {
@@ -15,13 +15,18 @@ namespace ConsoleApp
         internal void TestMethod()
         {
             wasRun = $"{Name.Method.Name} was run";
+            log += " TestMethod";
         }
 
         public override void SetUp()
         {
             wasRun = "None";
-            wasSetUp = $"{Name.Method.Name} was set up";
+            log = "SetUp";
         }
 
+        public override void TearDown()
+        {
+            log += " TearDown";
+        }
     }
 }

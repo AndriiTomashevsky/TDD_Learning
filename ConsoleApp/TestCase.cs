@@ -6,18 +6,19 @@ using System.Threading.Tasks;
 
 namespace ConsoleApp
 {
-    public abstract class TestCase
+    public class TestCase
     {
         public Method Name { get; set; }
-        public WasRun test;
 
         internal void Run()
         {
             SetUp();
             Method method = Name;
             method();
+            TearDown();
         }
 
-        public abstract void SetUp();
+        public virtual void TearDown() { }
+        public virtual void SetUp() { }
     }
 }
