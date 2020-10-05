@@ -17,6 +17,23 @@ namespace ConsoleApp
             test.Name = test.TestTemplateMethod;
             test.Run();
 
+            test = new TestCaseTest();
+            test.Name = test.TestResult;
+            test.Run();
+
+            test = new TestCaseTest();
+            test.Name = test.TestFailedResult;
+            test.Run();
+
+            test = new TestCaseTest();
+            test.Name = test.TestFailedResultFormatting;
+            test.Run();
+
+            test = new TestCaseTest();
+            test.Name = test.TestFailedSetUp;
+            test.Run();
+
+
             Console.ReadKey();
         }
     }

@@ -10,12 +10,36 @@ namespace ConsoleApp
     {
         public Method Name { get; set; }
 
-        internal void Run()
+        internal TestResult Run()
         {
-            SetUp();
+            TestResult result = new TestResult();
+            result.TestStarted();
+
+            try
+            {
+                SetUp();
+            }
+            catch (Exception)
+            {
+                result.ResetCount();
+
+                return result; 
+            }
+
             Method method = Name;
-            method();
+
+            try
+            {
+                method();
+            }
+            catch (Exception)
+            {
+                result.TestFailed();
+            }
+
             TearDown();
+
+            return result;
         }
 
         public virtual void TearDown() { }
