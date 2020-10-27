@@ -47,6 +47,7 @@
     <Compile Include="TestCase.cs" />
     <Compile Include="TestCaseTest.cs" />
     <Compile Include="TestResult.cs" />
+    <Compile Include="TestSuit.cs" />
     <Compile Include="WasRun.cs" />
     <Compile Include="WasRunSetUpFailed.cs" />
   </ItemGroup>

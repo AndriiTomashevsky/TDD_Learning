@@ -2,7 +2,7 @@
 
 namespace ConsoleApp
 {
-    internal class TestResult
+    public class TestResult
     {
         private int runCount;
         private int errorCount;

@@ -9,10 +9,10 @@ namespace ConsoleApp
     public class TestCase
     {
         public Method Name { get; set; }
+        protected TestResult result;
 
-        internal TestResult Run()
+        internal void Run(TestResult result)
         {
-            TestResult result = new TestResult();
             result.TestStarted();
 
             try
@@ -22,8 +22,6 @@ namespace ConsoleApp
             catch (Exception)
             {
                 result.ResetCount();
-
-                return result; 
             }
 
             Method method = Name;
@@ -38,8 +36,6 @@ namespace ConsoleApp
             }
 
             TearDown();
-
-            return result;
         }
 
         public virtual void TearDown() { }

@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace CleanCode.Tests
 {
-    [TestClass]
+    //[TestClass]
     public class DollarTests
     {
         [TestMethod]

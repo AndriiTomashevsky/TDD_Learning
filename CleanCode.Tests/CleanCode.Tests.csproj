@@ -54,6 +54,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="DrawingShapesTest.cs" />
+    <Compile Include="FibonacciTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="DollarTests.cs" />
   </ItemGroup>
