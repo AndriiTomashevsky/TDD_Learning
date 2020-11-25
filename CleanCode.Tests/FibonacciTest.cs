@@ -7,31 +7,31 @@ using System.Threading.Tasks;
 
 namespace CleanCode.Tests
 {
-    //[TestClass]
+    [TestClass]
     public class FibonacciTest
     {
         [TestMethod]
         public void TestFibonacci()
         {
-            int[,] cases = { { 0, 0 }, { 1, 1 }, { 2, 1 }, { 3, 2 } };
+            int[] cases = new[] { 0, 1, 1, 2, 3, 5, 8, 13, 21, 34, 55, 89, 144, 233, 377, 610, 987, 1597, 2584, 4181, 6765, 10946, 17711 };
 
-            for (int i = 0; i < cases.Length / 2; i++)
+            for (int i = 0; i < cases.Length; i++)
             {
-                Assert.AreEqual(cases[i, 1], Fib(cases[i, 0]));
+                Assert.AreEqual(cases[i], Fib(i));
             }
         }
 
-        private int Fib(int n)
+        private int Fib(int i)
         {
-            if (n == 0)
+            if (i == 0)
             {
                 return 0;
             }
-            if (n == 2)
+            if (i == 1)
             {
                 return 1;
             }
-            return Fib(n - 1) + Fib(n - 2);
+            return Fib(i - 2) + Fib(i - 1);
         }
     }
 }
